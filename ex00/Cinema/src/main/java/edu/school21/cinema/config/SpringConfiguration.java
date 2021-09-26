@@ -44,7 +44,7 @@ public class SpringConfiguration {
     @Bean
     public FreeMarkerConfigurer freeMarkerConfigurer(){
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
-        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/jsp/");
         return freeMarkerConfigurer;
     }
 
