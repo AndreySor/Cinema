@@ -66,8 +66,12 @@
       <artifactId>spring-orm</artifactId>
       <version>5.3.9</version>
     </dependency>
-
-
+    <!-- https://mvnrepository.com/artifact/org.freemarker/freemarker -->
+    <dependency>
+      <groupId>org.freemarker</groupId>
+      <artifactId>freemarker</artifactId>
+      <version>2.3.23</version>
+    </dependency>
   </dependencies>
 
   <build>

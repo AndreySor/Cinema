@@ -15,6 +15,8 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
+import org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
@@ -22,10 +24,10 @@ import java.beans.PropertyVetoException;
 import java.util.Properties;
 
 @Configuration
-@PropertySource("../application.properties")
 @EnableWebMvc
 @EnableTransactionManagement
-@ComponentScan("edu.school21.cinema")
+@ComponentScan(basePackages = "edu.school21.cinema")
+@PropertySource("classpath:application.properties")
 public class SpringConfiguration {
 
     @Value("${datasource.driver-class-name}")
@@ -40,10 +42,17 @@ public class SpringConfiguration {
     private String pathToImagesFolder;
 
     @Bean
+    public FreeMarkerConfigurer freeMarkerConfigurer(){
+        FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
+        freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/views/ftl/");
+        return freeMarkerConfigurer;
+    }
+
+    @Bean
     public ViewResolver viewResolver() {
-        InternalResourceViewResolver internalResourceViewResolver = new InternalResourceViewResolver();
+        FreeMarkerViewResolver internalResourceViewResolver = new FreeMarkerViewResolver();
         internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
-        internalResourceViewResolver.setSuffix(".jsp");
+        internalResourceViewResolver.setSuffix(".ftl");
 
         return internalResourceViewResolver;
     }
