@@ -51,7 +51,8 @@ public class SpringConfiguration {
     @Bean
     public ViewResolver viewResolver() {
         FreeMarkerViewResolver internalResourceViewResolver = new FreeMarkerViewResolver();
-        internalResourceViewResolver.setPrefix("/WEB-INF/jsp/");
+        internalResourceViewResolver.setCache(true);
+        internalResourceViewResolver.setPrefix("");
         internalResourceViewResolver.setSuffix(".ftl");
 
         return internalResourceViewResolver;

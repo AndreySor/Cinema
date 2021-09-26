@@ -1,4 +1,3 @@
-<#import "/spring.ftl" as spring/>
 <html>
 <head>
     <title>Halls List</title>
@@ -11,7 +10,7 @@
             <th>Serial number</th>
             <th>Number of seats</th>
         </tr>
-        <#list model["halls"] as hall>
+        <#list halls as hall>
         <tr>
             <td>${hall.serialNumber}</td>
             <td>${hall.seatsNumber}</td>
