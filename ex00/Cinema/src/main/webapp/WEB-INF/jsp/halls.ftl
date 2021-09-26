@@ -11,7 +11,7 @@
             <th>Serial number</th>
             <th>Number of seats</th>
         </tr>
-        <#list halls as hall>
+        <#list model["halls"] as hall>
         <tr>
             <td>${hall.serialNumber}</td>
             <td>${hall.seatsNumber}</td>
