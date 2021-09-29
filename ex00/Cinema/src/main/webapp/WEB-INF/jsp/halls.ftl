@@ -18,5 +18,9 @@
         </#list>
     </table>
 </div>
+<br>
+<br>
+<input type="button" value="Add new Hall"
+       onclick="window.location.href = '/admin/panel/addNewHall'"/>
 </body>
 </html>

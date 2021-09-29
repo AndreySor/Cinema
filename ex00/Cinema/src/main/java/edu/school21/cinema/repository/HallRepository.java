@@ -5,5 +5,9 @@ import edu.school21.cinema.model.Hall;
 import java.util.List;
 
 public interface HallRepository {
-    public List<Hall> getAll();
+    List<Hall> getAll();
+
+    Hall getHall(Integer serialNumber);
+
+    void save(Hall hall);
 }

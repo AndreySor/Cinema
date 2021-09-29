@@ -23,4 +23,16 @@ public class HallRepositoryImpl implements HallRepository {
     public List<Hall> getAll() {
         return entityManager.createQuery("from Hall ", Hall.class).getResultList();
     }
+
+    @Override
+    @Transactional
+    public Hall getHall(Integer serialNumber) {
+        return entityManager.find(Hall.class, serialNumber);
+    }
+
+    @Override
+    @Transactional
+    public void save(Hall hall) {
+        entityManager.merge(hall);
+    }
 }
