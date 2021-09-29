@@ -12,7 +12,7 @@
 <div>
     <fieldset>
         <legend>Add Hall</legend>
-        <form name="hall" action="add" method="POST">
+        <form name="hall" action="/admin/panel/saveNewHall" method="POST">
             Serial Number: <input type="number" name="serialNumber" /><br/>
             Seats Number:  <input type="number" name="seatsNumber" /><br/>
             <input type="submit" value="Create"/>

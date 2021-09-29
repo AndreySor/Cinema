@@ -38,7 +38,7 @@ public class HallController {
 
         return "addHall";
     }
-    @RequestMapping(value = "/admin/panel/saveNewHall", method = RequestMethod.GET)
+    @RequestMapping(value = "/admin/panel/saveNewHall", method = RequestMethod.POST)
     public String saveNewHall(Model model, @ModelAttribute("hall") Hall hall) {
         if (hall == null || hall.getSerialNumber() == null || hall.getSeatsNumber() == null) {
             model.addAttribute("errorMessage", "Please enter all data");
