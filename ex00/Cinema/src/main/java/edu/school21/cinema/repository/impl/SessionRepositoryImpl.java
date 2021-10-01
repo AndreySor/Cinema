@@ -1,6 +1,6 @@
 package edu.school21.cinema.repository.impl;
 
-import edu.school21.cinema.model.Hall;
+import edu.school21.cinema.model.Session;
 import edu.school21.cinema.repository.BaseCRUDRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -10,26 +10,26 @@ import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
-public class HallRepositoryImpl implements BaseCRUDRepository<Hall> {
+public class SessionRepositoryImpl implements BaseCRUDRepository<Session> {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
     @Transactional
-    public List<Hall> getAll() {
-        return entityManager.createQuery("from Hall ", Hall.class).getResultList();
+    public List<Session> getAll() {
+        return entityManager.createQuery("FROM Session", Session.class).getResultList();
     }
 
     @Override
     @Transactional
-    public Hall get(Long id) {
-        return entityManager.find(Hall.class, id);
+    public Session get(Long id) {
+        return entityManager.find(Session.class, id);
     }
 
     @Override
     @Transactional
-    public void save(Hall hall) {
-        entityManager.merge(hall);
+    public void save(Session session) {
+        entityManager.merge(session);
     }
 }

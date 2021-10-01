@@ -45,6 +45,7 @@ public class SpringConfiguration {
     public FreeMarkerConfigurer freeMarkerConfigurer(){
         FreeMarkerConfigurer freeMarkerConfigurer = new FreeMarkerConfigurer();
         freeMarkerConfigurer.setTemplateLoaderPath("/WEB-INF/jsp/");
+
         return freeMarkerConfigurer;
     }
 
@@ -81,11 +82,11 @@ public class SpringConfiguration {
         entityManagerFactory.setJpaProperties(hibernateProperties());
         entityManagerFactory.setJpaVendorAdapter(createJpaVendorAdapter());
         entityManagerFactory.afterPropertiesSet();
+
         return entityManagerFactory;
     }
 
     public Properties hibernateProperties() {
-
         Properties hibernateProperties = new Properties();
         hibernateProperties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL9Dialect");
         hibernateProperties.setProperty("hibernate.show_sql", "true");
