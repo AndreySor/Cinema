@@ -8,10 +8,11 @@ CREATE TABLE IF NOT EXISTS cinema_halls
 CREATE TABLE IF NOT EXISTS cinema_films
 (
     film_id bigserial PRIMARY KEY,
-    title VARCHAR(64) NOT NULL,
+    title VARCHAR(64) UNIQUE NOT NULL,
     release_year INTEGER NOT NULL,
     age_restrictions INTEGER NOT NULL,
-    description TEXT
+    description TEXT,
+    poster TEXT
 );
 
 CREATE TABLE IF NOT EXISTS cinema_sessions

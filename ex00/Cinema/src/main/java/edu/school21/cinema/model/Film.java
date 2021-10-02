@@ -1,5 +1,7 @@
 package edu.school21.cinema.model;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,7 +23,11 @@ public class Film {
     @Column(name = "age_restrictions")
     private Integer ageRestriction;
 
+    @Column(name = "description")
     private String description;
+
+    @Column(name = "poster")
+    private String poster;
 
     @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
     private Set<Session> sessions = new HashSet<>();
@@ -69,6 +75,14 @@ public class Film {
         this.description = description;
     }
 
+    public String getPoster() {
+        return poster;
+    }
+
+    public void setPoster(String poster) {
+        this.poster = poster;
+    }
+
     public Set<Session> getSessions() {
         return sessions;
     }
@@ -85,6 +99,7 @@ public class Film {
                 ", releaseYear=" + releaseYear +
                 ", ageRestriction=" + ageRestriction +
                 ", description='" + description + '\'' +
+                ", poster='" + poster + '\'' +
                 ", sessions=" + sessions +
                 '}';
     }

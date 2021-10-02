@@ -21,7 +21,7 @@ public class HallRepositoryImpl implements HallRepository {
     @Override
     @Transactional
     public List<Hall> getAll() {
-        return entityManager.createQuery("from Hall ", Hall.class).getResultList();
+        return entityManager.createQuery("FROM Hall ", Hall.class).getResultList();
     }
 
     @Override
@@ -41,7 +41,7 @@ public class HallRepositoryImpl implements HallRepository {
     public Hall getFromSerialNumber(Integer serialNumber) {
         Hall hall = null;
         try{
-            hall = entityManager.createQuery("from Hall where serialNumber =:serialNumber", Hall.class).setParameter("serialNumber", serialNumber).getSingleResult();
+            hall = entityManager.createQuery("FROM Hall where serialNumber =:serialNumber", Hall.class).setParameter("serialNumber", serialNumber).getSingleResult();
         } catch (NoResultException ignored){}
         return hall;
     }
