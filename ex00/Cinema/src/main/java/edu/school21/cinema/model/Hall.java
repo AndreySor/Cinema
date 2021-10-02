@@ -18,9 +18,6 @@ public class Hall {
     @Column(name = "seats_number")
     private Integer seatsNumber;
 
-    @OneToMany(mappedBy = "hall")
-    private Set<Session> sessions;
-
     public Hall() {
     }
 

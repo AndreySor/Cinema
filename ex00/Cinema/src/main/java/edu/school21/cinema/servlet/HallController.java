@@ -2,6 +2,7 @@ package edu.school21.cinema.servlet;
 
 import edu.school21.cinema.model.Hall;
 import edu.school21.cinema.repository.BaseCRUDRepository;
+import edu.school21.cinema.repository.HallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -15,17 +16,17 @@ import java.util.List;
 @Controller
 public class HallController {
 
-    private final BaseCRUDRepository baseCRUDRepository;
+    private final HallRepository hallRepository;
 
     @Autowired
-    public HallController(@Qualifier("hallRepositoryImpl") BaseCRUDRepository baseCRUDRepository) {
-        this.baseCRUDRepository = baseCRUDRepository;
+    public HallController(@Qualifier("hallRepositoryImpl") HallRepository hallRepository) {
+        this.hallRepository = hallRepository;
 
     }
 
     @RequestMapping(value = "/admin/panel/halls", method = RequestMethod.GET)
     public String showAllHals(Model model) {
-        List<Hall> halls = baseCRUDRepository.getAll();
+        List<Hall> halls = hallRepository.getAll();
         model.addAttribute("halls", halls);
 
         return "halls";
@@ -43,11 +44,11 @@ public class HallController {
         if (hall == null || hall.getSerialNumber() == null || hall.getSeatsNumber() == null) {
             model.addAttribute("errorMessage", "Please enter all data");
             return "addHall";
-        } else if (baseCRUDRepository.get(hall.getHallId()) != null) {
+        } else if (hallRepository.getFromSerialNumber(hall.getSerialNumber()) != null) {
             model.addAttribute("errorMessage", "A hall with this number already exists");
             return "addHall";
         } else {
-            baseCRUDRepository.save(hall);
+            hallRepository.save(hall);
         }
         return "redirect:/admin/panel/halls";
     }

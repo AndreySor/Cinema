@@ -16,6 +16,8 @@
             Serial Number: <input type="number" name="serialNumber" /><br/>
             Seats Number:  <input type="number" name="seatsNumber" /><br/>
             <input type="submit" value="Create"/>
+            <input type="button" value="Exit"
+                   onclick="window.location.href = '/admin/panel/halls'"/>
         </form>
     </fieldset>
 </div>
