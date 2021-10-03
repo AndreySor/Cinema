@@ -1,6 +1,7 @@
 package edu.school21.cinema.model;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class SaveFilm {
     private String title;

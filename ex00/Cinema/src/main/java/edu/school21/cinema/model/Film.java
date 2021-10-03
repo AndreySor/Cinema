@@ -36,6 +36,14 @@ public class Film {
     public Film() {
     }
 
+    public Film(String title, Integer releaseYear, Integer ageRestriction, String description, String poster) {
+        this.title = title;
+        this.releaseYear = releaseYear;
+        this.ageRestriction = ageRestriction;
+        this.description = description;
+        this.poster = poster;
+    }
+
     public Long getFilmId() {
         return filmId;
     }

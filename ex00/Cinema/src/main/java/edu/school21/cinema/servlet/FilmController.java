@@ -3,6 +3,7 @@ package edu.school21.cinema.servlet;
 import edu.school21.cinema.model.Film;
 import edu.school21.cinema.model.SaveFilm;
 import edu.school21.cinema.repository.FilmRepository;
+import edu.school21.cinema.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -24,11 +25,13 @@ public class FilmController {
 
     private String imagesPath;
 
+    private FilmService filmService;
+
     @Autowired
     public FilmController(@Qualifier("filmRepositoryImpl") FilmRepository filmRepository,
-                          @Qualifier("pathToImagesFolder") String pathToImagesFolder) {
+                          FilmService filmService) {
         this.filmRepository = filmRepository;
-        this.imagesPath = pathToImagesFolder;
+        this.filmService = filmService;
     }
 
     @RequestMapping(value = "/admin/panel/films", method = RequestMethod.GET)
@@ -47,17 +50,24 @@ public class FilmController {
         return "addFilm";
     }
     @RequestMapping(value = "/admin/panel/saveNewFilm", method = RequestMethod.POST)
-    public String saveNewFilm(Model model, @RequestParam MultipartFile file) {
-        if (film == null || film.getTitle() == null || film.getAgeRestriction() == null || film.getReleaseYear() == null) {
-            model.addAttribute("errorMessage", "Please enter all data");
+    public String saveNewFilm(Model model, @ModelAttribute("film") SaveFilm film) {
+        try {
+            filmService.saveFilm(film);
+        } catch (RuntimeException ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
             return "addFilm";
-        } else if (filmRepository.getByTitle(film.getTitle()) != null) {
-            model.addAttribute("errorMessage", "A film with this title already exists");
-            return "addFilm";
-        } else {
-//            filmRepository.save(film);
-
         }
+        return "redirect:/admin/panel/films";
+    }
+
+    @RequestMapping(value = "/admin/panel/addPoster", method = RequestMethod.POST)
+    public String addPoster(Model model, @ModelAttribute("film") Film film) {
+//        try {
+//            filmService.saveFilm(film);
+//        } catch (RuntimeException ex) {
+//            model.addAttribute("errorMessage", ex.getMessage());
+//            return "addFilm";
+//        }
         return "redirect:/admin/panel/films";
     }
 }
