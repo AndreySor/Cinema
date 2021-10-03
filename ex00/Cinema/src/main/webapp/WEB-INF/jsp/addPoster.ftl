@@ -12,8 +12,9 @@
 <div>
     <fieldset>
         <legend>Add Poster</legend>
-        <form name="poster" action="/admin/panel/addPoster" method="POST" enctype="multipart/form-data">
-            Poster: <input type="file" name="poster" /><br/>
+        <form name="saveFilm" action="/admin/panel/savePoster" method="POST" enctype="multipart/form-data">
+            <td><input type="hidden" value="${saveFilm.title}" name="title"></td>
+            Poster: <input type="file" name="file" /><br/>
             <input type="submit" value="Create"/>
             <input type="button" value="Exit"
                    onclick="window.location.href = '/admin/panel/films'"/>

@@ -10,6 +10,13 @@ public class SaveFilm {
     private Integer ageRestriction;
     private String description;
 
+    public SaveFilm() {
+    }
+
+    public SaveFilm(String title) {
+        this.title = title;
+    }
+
     public String getTitle() {
         return title;
     }
