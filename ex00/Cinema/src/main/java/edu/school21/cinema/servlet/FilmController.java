@@ -1,6 +1,7 @@
 package edu.school21.cinema.servlet;
 
 import edu.school21.cinema.model.Film;
+import edu.school21.cinema.model.SaveFilm;
 import edu.school21.cinema.repository.FilmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,6 +11,8 @@ import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.util.List;
@@ -38,13 +41,13 @@ public class FilmController {
 
     @RequestMapping(value = "/admin/panel/addNewFilm", method = RequestMethod.GET)
     public String addNewFilm(Model model) {
-        Film film = new Film();
+        SaveFilm film = new SaveFilm();
         model.addAttribute("film", film);
 
         return "addFilm";
     }
     @RequestMapping(value = "/admin/panel/saveNewFilm", method = RequestMethod.POST)
-    public String saveNewFilm(Model model, @ModelAttribute("film") Film film) {
+    public String saveNewFilm(Model model, @RequestParam MultipartFile file) {
         if (film == null || film.getTitle() == null || film.getAgeRestriction() == null || film.getReleaseYear() == null) {
             model.addAttribute("errorMessage", "Please enter all data");
             return "addFilm";
@@ -52,7 +55,7 @@ public class FilmController {
             model.addAttribute("errorMessage", "A film with this title already exists");
             return "addFilm";
         } else {
-            filmRepository.save(film);
+//            filmRepository.save(film);
 
         }
         return "redirect:/admin/panel/films";

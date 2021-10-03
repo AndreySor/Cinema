@@ -12,12 +12,12 @@
 <div>
     <fieldset>
         <legend>Add Film</legend>
-        <form name="film" action="/admin/panel/saveNewFilm" method="POST">
+        <form name="film" action="/admin/panel/saveNewFilm" method="POST" enctype="multipart/form-data">
             Title          : <input type="text" name="title" /><br/>
             Release year   : <input type="number" name="releaseYear" /><br/>
             Age restriction: <input type="number" name="ageRestriction" /><br/>
             Description    : <input type="text" name="description" /><br/>
-            Poster         : <input type="file" name="poster" /><br/>
+            Poster         : <input type="file" name="file" /><br/>
             <input type="submit" value="Create"/>
             <input type="button" value="Exit"
                    onclick="window.location.href = '/admin/panel/films'"/>

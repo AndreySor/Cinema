@@ -15,6 +15,7 @@ public class Film {
     @Column(name = "film_id")
     private Long filmId;
 
+    @Column(name = "title")
     private String title;
 
     @Column(name = "release_year")
