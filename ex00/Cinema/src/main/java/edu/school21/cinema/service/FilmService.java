@@ -5,4 +5,6 @@ import edu.school21.cinema.model.SaveFilm;
 public interface FilmService {
 
     void saveFilm(SaveFilm saveFilm);
+
+    void updateFilm(SaveFilm saveFilm);
 }

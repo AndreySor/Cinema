@@ -69,6 +69,12 @@ public class FilmController {
 
     @RequestMapping(value = "/admin/panel/savePoster", method = RequestMethod.POST)
     public String savePoster(Model model, @ModelAttribute("saveFilm") SaveFilm film) {
+        try {
+            filmService.updateFilm(film);
+        } catch (RuntimeException ex) {
+            model.addAttribute("errorMessage", ex.getMessage());
+            return "addFilm";
+        }
         return "redirect:/admin/panel/films";
     }
 }

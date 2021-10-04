@@ -33,7 +33,7 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public void saveFilm(SaveFilm saveFilm) {
         if (saveFilm == null || saveFilm.getTitle() == null || saveFilm.getAgeRestriction() == null || saveFilm.getReleaseYear() == null) {
-            throw  new NotAllDataException("Please enter all data");
+            throw new NotAllDataException("Please enter all data");
         } else if (filmRepository.getByTitle(saveFilm.getTitle()) != null) {
             throw new ObjectAlreadyExistsException("A film with this title already exists");
         } else {
@@ -50,6 +50,23 @@ public class FilmServiceImpl implements FilmService {
             filmRepository.save(film);
         }
     }
+
+    @Override
+    public void updateFilm(SaveFilm saveFilm) {
+        String key = "";
+        if (!saveFilm.getFile().getOriginalFilename().isEmpty()) {
+            try {
+                Film film = filmRepository.getByTitle(saveFilm.getTitle());
+                key = UUID.randomUUID().toString();
+                upload(saveFilm.getFile().getBytes(), key, saveFilm.getTitle());
+                film.setPoster(key);
+                filmRepository.save(film);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private void upload(byte[] resource, String keyName, String title) throws IOException {
         if (!Files.exists(Paths.get(imagesPath + title))) {
