@@ -1,6 +1,7 @@
 package edu.school21.cinema.model;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "cinema_sessions")
@@ -12,6 +13,9 @@ public class Session {
 
     @Column(name = "ticket_cost")
     private Integer ticketCost;
+
+    @Column(name = "session_date")
+    private Date date;
 
     @ManyToOne
     @JoinColumn(name = "hall_id")
@@ -54,5 +58,13 @@ public class Session {
 
     public void setFilm(Film film) {
         this.film = film;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }

@@ -1,10 +1,6 @@
 package edu.school21.cinema.model;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "cinema_films")
@@ -29,9 +25,6 @@ public class Film {
 
     @Column(name = "poster")
     private String poster;
-
-    @OneToMany(mappedBy = "film", fetch = FetchType.EAGER)
-    private Set<Session> sessions = new HashSet<>();
 
     public Film() {
     }
@@ -92,24 +85,8 @@ public class Film {
         this.poster = poster;
     }
 
-    public Set<Session> getSessions() {
-        return sessions;
-    }
-
-    public void setSessions(Set<Session> sessions) {
-        this.sessions = sessions;
-    }
-
-    @Override
-    public String toString() {
-        return "Film{" +
-                "filmId=" + filmId +
-                ", title='" + title + '\'' +
-                ", releaseYear=" + releaseYear +
-                ", ageRestriction=" + ageRestriction +
-                ", description='" + description + '\'' +
-                ", poster='" + poster + '\'' +
-                ", sessions=" + sessions +
-                '}';
+    public Film withId(Long id) {
+        this.filmId = id;
+        return this;
     }
 }

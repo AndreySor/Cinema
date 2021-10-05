@@ -19,6 +19,7 @@ CREATE TABLE IF NOT EXISTS cinema_sessions
 (
     id bigserial PRIMARY KEY,
     ticket_cost INTEGER NOT NULL,
+    session_date TIMESTAMP WITHOUT TIME ZONE,
     hall_id INTEGER REFERENCES cinema_halls (hall_id),
     film_id INTEGER REFERENCES cinema_films (film_id)
 );

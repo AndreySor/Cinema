@@ -1,7 +1,6 @@
 package edu.school21.cinema.servlet;
 
 import edu.school21.cinema.model.Hall;
-import edu.school21.cinema.repository.BaseCRUDRepository;
 import edu.school21.cinema.repository.HallRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,7 +20,6 @@ public class HallController {
     @Autowired
     public HallController(@Qualifier("hallRepositoryImpl") HallRepository hallRepository) {
         this.hallRepository = hallRepository;
-
     }
 
     @RequestMapping(value = "/admin/panel/halls", method = RequestMethod.GET)

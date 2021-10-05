@@ -30,6 +30,6 @@ public class SessionRepositoryImpl implements BaseCRUDRepository<Session> {
     @Override
     @Transactional
     public void save(Session session) {
-        entityManager.merge(session);
+        entityManager.persist(session);
     }
 }
