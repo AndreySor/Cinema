@@ -1,8 +1,6 @@
 package edu.school21.cinema.repository.impl;
 
 import edu.school21.cinema.model.Film;
-import edu.school21.cinema.model.Hall;
-import edu.school21.cinema.repository.BaseCRUDRepository;
 import edu.school21.cinema.repository.FilmRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;

@@ -1,7 +1,6 @@
 package edu.school21.cinema.repository.impl;
 
 import edu.school21.cinema.model.Hall;
-import edu.school21.cinema.repository.BaseCRUDRepository;
 import edu.school21.cinema.repository.HallRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import java.util.List;
 
 @Repository

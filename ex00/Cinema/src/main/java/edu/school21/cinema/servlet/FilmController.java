@@ -38,7 +38,6 @@ public class FilmController {
     public String showAllFilm(Model model) {
         List<Film> films = filmRepository.getAll();
         model.addAttribute("films", films);
-
         return "films";
     }
 

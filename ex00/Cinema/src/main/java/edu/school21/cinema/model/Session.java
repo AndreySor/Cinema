@@ -28,6 +28,13 @@ public class Session {
     public Session() {
     }
 
+    public Session(Long id, Integer ticketCost, Date date, Film film) {
+        this.id = id;
+        this.ticketCost = ticketCost;
+        this.date = date;
+        this.film = film;
+    }
+
     public Long getId() {
         return id;
     }

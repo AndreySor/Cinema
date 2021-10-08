@@ -1,13 +1,10 @@
-package edu.school21.cinema.service;
+package edu.school21.cinema.repository;
 
 import edu.school21.cinema.model.Session;
 
 import java.util.List;
 
-public interface SessionService {
-
-    void save(Session session);
-    List<Session> getAll();
+public interface SessionRepository extends BaseCRUDRepository<Session> {
 
     //функционал для ex01
     List<Session> searchByRequest(String request);
