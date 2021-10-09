@@ -8,6 +8,7 @@ import edu.school21.cinema.repository.FilmRepository;
 import edu.school21.cinema.service.FilmService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;
 
 import java.io.FileOutputStream;
@@ -23,12 +24,15 @@ public class FilmServiceImpl implements FilmService {
 
     private FilmRepository filmRepository;
     private String imagesPath;
+    private SimpMessagingTemplate messagingTemplate;
 
     @Autowired
     public FilmServiceImpl(@Qualifier("filmRepositoryImpl") FilmRepository filmRepository,
-                           @Qualifier("pathToImagesFolder") String pathToImagesFolder) {
+                           @Qualifier("pathToImagesFolder") String pathToImagesFolder,
+                           SimpMessagingTemplate messagingTemplate) {
         this.filmRepository = filmRepository;
         this.imagesPath = pathToImagesFolder;
+        this.messagingTemplate = messagingTemplate;
     }
 
     @Override
@@ -54,7 +58,7 @@ public class FilmServiceImpl implements FilmService {
 
     @Override
     public void updateFilm(SaveFilm saveFilm) {
-        String key = "";
+        String key;
         if (saveFilm.getFile().getOriginalFilename() != null && !saveFilm.getFile().getOriginalFilename().isEmpty()) {
             try {
                 Film film = filmRepository.getByTitle(saveFilm.getTitle());
@@ -79,12 +83,8 @@ public class FilmServiceImpl implements FilmService {
 
         Path path = Paths.get(imagesPath + title, keyName);
         Path file = Files.createFile(path);
-        FileOutputStream stream = null;
-        try {
-            stream = new FileOutputStream(file.toString());
+        try (FileOutputStream stream = new FileOutputStream(file.toString())) {
             stream.write(resource);
-        } finally {
-            stream.close();
         }
     }
 
