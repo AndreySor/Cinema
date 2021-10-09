@@ -1,6 +1,7 @@
 <html>
 <head>
     <style>
+        <#setting classic_compatible=true>
         <#include "css/style.css">
     </style>
     <title>Films List</title>

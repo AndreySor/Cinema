@@ -39,7 +39,7 @@ public class FilmServiceImpl implements FilmService {
             throw new ObjectAlreadyExistsException("A film with this title already exists");
         } else {
             String key = "";
-            if (!saveFilm.getFile().getOriginalFilename().isEmpty()) {
+            if (saveFilm.getFile().getOriginalFilename() != null && !saveFilm.getFile().getOriginalFilename().isEmpty()) {
                 try {
                     key = UUID.randomUUID().toString();
                     upload(saveFilm.getFile().getBytes(), key, saveFilm.getTitle());
@@ -55,7 +55,7 @@ public class FilmServiceImpl implements FilmService {
     @Override
     public void updateFilm(SaveFilm saveFilm) {
         String key = "";
-        if (!saveFilm.getFile().getOriginalFilename().isEmpty()) {
+        if (saveFilm.getFile().getOriginalFilename() != null && !saveFilm.getFile().getOriginalFilename().isEmpty()) {
             try {
                 Film film = filmRepository.getByTitle(saveFilm.getTitle());
                 key = UUID.randomUUID().toString();
