@@ -23,3 +23,20 @@ CREATE TABLE IF NOT EXISTS cinema_sessions
     hall_id INTEGER REFERENCES cinema_halls (hall_id),
     film_id INTEGER REFERENCES cinema_films (film_id)
 );
+
+CREATE TABLE IF NOT EXISTS cinema_authentications
+(
+    id BIGSERIAL PRIMARY KEY,
+    login VARCHAR(64) UNIQUE NOT NULL,
+    authentication_date TIMESTAMP WITHOUT TIME ZONE,
+    ip_address VARCHAR(64)
+    );
+
+CREATE TABLE IF NOT EXISTS cinema_messages
+(
+    id BIGSERIAL PRIMARY KEY,
+    message  TEXT NOT NULL,
+    login VARCHAR(64) UNIQUE NOT NULL REFERENCES cinema_authentications (login),
+    message_date TIMESTAMP WITHOUT TIME ZONE,
+    film_id BIGSERIAL REFERENCES cinema_films (film_id)
+    );

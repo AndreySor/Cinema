@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class SessionServiceImpl implements SessionService {
 
-    private SessionRepository sessionRepository;
+    private final SessionRepository sessionRepository;
 
     public SessionServiceImpl(@Qualifier("sessionRepositoryImpl") SessionRepository sessionRepository) {
         this.sessionRepository = sessionRepository;

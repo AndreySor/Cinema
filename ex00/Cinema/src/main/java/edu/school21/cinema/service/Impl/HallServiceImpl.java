@@ -11,7 +11,7 @@ import java.util.List;
 @Component
 public class HallServiceImpl implements HallService {
 
-    private HallRepository hallRepository;
+    private final HallRepository hallRepository;
 
     public HallServiceImpl(@Qualifier("hallRepositoryImpl") HallRepository hallRepository) {
         this.hallRepository = hallRepository;
