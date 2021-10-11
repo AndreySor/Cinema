@@ -7,9 +7,9 @@ public class FilmResponse {
 
     private String posterUrl;
 
-    public FilmResponse(String name) {
+    public FilmResponse(String name, String posterUrl) {
         this.name = name;
-        this.posterUrl = "zaglushka";
+        this.posterUrl = posterUrl;
     }
 
     public String getName() {

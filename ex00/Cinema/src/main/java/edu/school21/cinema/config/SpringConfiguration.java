@@ -1,6 +1,7 @@
 package edu.school21.cinema.config;
 
 import com.mchange.v2.c3p0.ComboPooledDataSource;
+import edu.school21.cinema.mapper.SessionsResponseMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -265,6 +266,11 @@ public class SpringConfiguration {
     @Bean
     public StandardServletMultipartResolver multipartResolver() {
         return new StandardServletMultipartResolver();
+    }
+
+    @Bean("SessionsResponseMapper")
+    public SessionsResponseMapper sessionsResponseMapper() {
+        return new SessionsResponseMapper(pathToImagesFolder);
     }
 
     @Bean("pathToImagesFolder")

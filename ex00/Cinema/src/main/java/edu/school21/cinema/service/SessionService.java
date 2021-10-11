@@ -8,6 +8,7 @@ public interface SessionService {
 
     void save(Session session);
     List<Session> getAll();
+    Session get(Long id);
 
     //функционал для ex01
     List<Session> searchByRequest(String request);

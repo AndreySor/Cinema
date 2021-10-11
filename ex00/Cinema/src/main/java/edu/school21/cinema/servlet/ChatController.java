@@ -1,6 +1,5 @@
 package edu.school21.cinema.servlet;
 
-import com.sun.deploy.net.HttpResponse;
 import edu.school21.cinema.model.Film;
 import edu.school21.cinema.model.Message;
 import edu.school21.cinema.repository.AuthenticationRepository;
@@ -11,7 +10,6 @@ import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

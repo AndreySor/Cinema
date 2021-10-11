@@ -43,6 +43,7 @@ public class FilmController {
 
         return "addFilm";
     }
+
     @RequestMapping(value = "/admin/panel/saveNewFilm", method = RequestMethod.POST)
     public String saveNewFilm(Model model, @ModelAttribute("film") SaveFilm film) {
         try {
