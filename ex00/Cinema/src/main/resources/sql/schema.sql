@@ -24,19 +24,25 @@ CREATE TABLE IF NOT EXISTS cinema_sessions
     film_id INTEGER REFERENCES cinema_films (film_id)
 );
 
+CREATE TABLE IF NOT EXISTS users
+(
+    id    BIGSERIAL PRIMARY KEY,
+    login VARCHAR(64) UNIQUE NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS cinema_authentications
 (
     id BIGSERIAL PRIMARY KEY,
-    login VARCHAR(64) UNIQUE NOT NULL,
+    user_id BIGSERIAL REFERENCES users (id),
     authentication_date TIMESTAMP WITHOUT TIME ZONE,
     ip_address VARCHAR(64)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS cinema_messages
 (
     id BIGSERIAL PRIMARY KEY,
-    message  TEXT NOT NULL,
-    login VARCHAR(64) UNIQUE NOT NULL REFERENCES cinema_authentications (login),
+    message TEXT NOT NULL,
+    author_id BIGSERIAL REFERENCES users (id),
     message_date TIMESTAMP WITHOUT TIME ZONE,
     film_id BIGSERIAL REFERENCES cinema_films (film_id)
-    );
+);

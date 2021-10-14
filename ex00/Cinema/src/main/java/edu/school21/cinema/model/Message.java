@@ -2,6 +2,7 @@ package edu.school21.cinema.model;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "cinema_messages")
@@ -12,11 +13,11 @@ public class Message {
     private Long id;
 
     @Column(name = "message")
-    String message;
+    private String message;
 
     @ManyToOne
-    @JoinColumn(name = "login")
-    Authentication authentication;
+    @JoinColumn(name = "author_id")
+    private User user;
 
     @Column(name = "message_date")
     private Date date;
@@ -25,13 +26,22 @@ public class Message {
     @JoinColumn(name = "film_id")
     private Film film;
 
+    @Transient
+    private MessageType type;
+
+    public enum MessageType {
+        CHAT,
+        JOIN,
+        LEAVE
+    }
+
     public Message() {
     }
 
-    public Message(Long id, String message, Authentication authentication, Date date, Film film) {
+    public Message(Long id, String message, User user, Date date, Film film) {
         this.id = id;
         this.message = message;
-        this.authentication = authentication;
+        this.user = user;
         this.date = date;
         this.film = film;
     }
@@ -52,12 +62,12 @@ public class Message {
         this.message = message;
     }
 
-    public Authentication getAuthentication() {
-        return authentication;
+    public User getUser() {
+        return user;
     }
 
-    public void setAuthentication(Authentication authentication) {
-        this.authentication = authentication;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Date getDate() {
@@ -74,5 +84,13 @@ public class Message {
 
     public void setFilm(Film film) {
         this.film = film;
+    }
+
+    public MessageType getType() {
+        return type;
+    }
+
+    public void setType(MessageType type) {
+        this.type = type;
     }
 }

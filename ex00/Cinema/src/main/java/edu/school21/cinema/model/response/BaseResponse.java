@@ -1,5 +1,7 @@
 package edu.school21.cinema.model.response;
 
+import edu.school21.cinema.model.Authentication;
+
 import java.util.List;
 
 //ex01

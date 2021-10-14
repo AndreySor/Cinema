@@ -10,4 +10,5 @@ public interface AuthenticationRepository {
     Authentication get(Long id);
     Authentication save(Authentication authentication);
     Long getCountRows();
+    List<Authentication> getAllByUserId(Long id);
 }

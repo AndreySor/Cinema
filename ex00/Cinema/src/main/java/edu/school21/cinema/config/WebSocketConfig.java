@@ -19,7 +19,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker( "/films");
+        config.enableSimpleBroker( "/topic");
         config.setApplicationDestinationPrefixes("/app");
         config.setUserDestinationPrefix("/films");
     }
@@ -28,7 +28,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry
                 .addEndpoint("/ws")
-                .setAllowedOrigins("*")
+                .addInterceptors(new IpHandshakeInterceptor())
                 .withSockJS();
     }
 
