@@ -9,9 +9,7 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>Cinema Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <name>Cinema (ex00)</name>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -89,12 +87,6 @@
       <version>1.4</version>
     </dependency>
 
-  <!--    for ex01-->
-<!--    <dependency>-->
-<!--      <groupId>com.googlecode.json-simple</groupId>-->
-<!--      <artifactId>json-simple</artifactId>-->
-<!--      <version>1.1.1</version>-->
-<!--    </dependency>-->
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>

@@ -31,10 +31,4 @@ public class SessionServiceImpl implements SessionService {
     public Session get(Long id) {
         return sessionRepository.get(id);
     }
-
-    //функционал для ex01
-    @Override
-    public List<Session> searchByRequest(String request) {
-        return sessionRepository.searchByRequest(request);
-    }
 }
