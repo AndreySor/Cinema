@@ -32,15 +32,4 @@ public class SessionRepositoryImpl implements SessionRepository {
     public void save(Session session) {
         entityManager.persist(session);
     }
-
-    //функционал для ex01
-    @Override
-    public List<Session> searchByRequest(String request) {
-        request = request + "%";
-        return entityManager.createQuery("SELECT new Session(s.id, s.ticketCost, s.date, f) " +
-                "FROM Session s JOIN Film f ON s.film.filmId = f.filmId " +
-                "WHERE f.title LIKE :request", Session.class)
-                .setParameter("request", request)
-                .getResultList();
-    }
 }

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ex00/Cinema/Cinema.iml" filepath="$PROJECT_DIR$/ex00/Cinema/Cinema.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex01/Cinema/Cinema (1).iml" filepath="$PROJECT_DIR$/ex01/Cinema/Cinema (1).iml" />
+      <module fileurl="file://$PROJECT_DIR$/ex02/Cinema/Cinema (2).iml" filepath="$PROJECT_DIR$/ex02/Cinema/Cinema (2).iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/CinemaCorrect.iml" filepath="$PROJECT_DIR$/.idea/CinemaCorrect.iml" />
+    </modules>
+  </component>
+</project>
