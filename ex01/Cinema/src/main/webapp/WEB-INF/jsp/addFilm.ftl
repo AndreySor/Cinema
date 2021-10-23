@@ -17,7 +17,7 @@
             Release year   : <input type="number" name="releaseYear" /><br/>
             Age restriction: <input type="number" name="ageRestriction" /><br/>
             Description    : <input type="text" name="description" /><br/>
-            Poster         : <input type="file" name="file" /><br/>
+            Poster         : <input type="file" name="file" multiple accept="image/*" /><br/>
             <input type="submit" value="Create"/>
             <input type="button" value="Exit"
                    onclick="window.location.href = '/admin/panel/films'"/>

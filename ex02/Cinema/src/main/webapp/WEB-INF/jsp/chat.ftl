@@ -5,6 +5,7 @@
         <#include "css/chat.css">
     </style>
     <title>Chat</title>
+    <meta charset="UTF-8">
 </head>
 <body>
 <div id="username-page">
@@ -56,7 +57,7 @@
             </div>
             <form id="avatarForm" enctype="multipart/form-data" method="POST" action="/images">
                 <p>
-                    <input type="file" name="avatar" id="avatar">
+                    <input type="file" name="avatar" id="avatar" multiple accept="image/*">
                     <input type="hidden" name="filmId" id="formFilmId">
                     <input type="hidden" name="userId" id="formUserId">
                     <button id="uploadButton">Upload</button>
@@ -88,9 +89,7 @@
     ];
 
     $(document).ready(function () {
-        console.log(document.cookie);
         document.getElementById("formFilmId").value=('${film.filmId}');
-        document.getElementById("formUserId").value=(getCookie("userId"));
         let userCookie = getCookie("user");
         if (userCookie) {
             username = userCookie;
@@ -116,9 +115,7 @@
     }
 
     function onConnected() {
-        // Subscribe to the Public Topic
         stompClient.subscribe('/topic/public', onMessageReceived);
-        // Tell your username to the server
         stompClient.send("/app/chat.addUser",
             {},
             JSON.stringify({type: 'JOIN', user: {
@@ -150,6 +147,7 @@
         }
         event.preventDefault();
     }
+
     function onMessageReceived(payload) {
         let message = JSON.parse(payload.body);
         let messageElement = document.createElement('li');
@@ -159,9 +157,8 @@
             if (!getCookie("userId")) {
                 document.cookie = "userId=" + message.user.id;
             }
-            console.log(getCookie("userId"));
-            console.log(message.user.id);
             if (getCookie("userId") == message.user.id) {
+                document.getElementById("formUserId").value=(getCookie("userId"));
                 getAuthList();
                 getListOfAvatar();
             }
